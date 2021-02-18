@@ -29,9 +29,7 @@ func main() {
 	svc := cloudwatch.New(session)
 	app := slide.InitServer(&config)
 	app.Use(middleware.Compress())
-	app.Use(middleware.CorsWithConfig(middleware.CorsConfig{
-		AllowOrigins: []string{"http://localhost:3000/"},
-	}))
+	app.Use(middleware.CorsWithConfig(middleware.DefaultCORSConfig))
 	app.Get("/health", func(ctx *slide.Ctx) error {
 		return ctx.SendStatusCode(http.StatusOK)
 	})
