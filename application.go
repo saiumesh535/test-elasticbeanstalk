@@ -6,6 +6,7 @@ import (
 
 	"github.com/go-playground/validator/v10"
 	"github.com/go-slide/slide"
+	"github.com/go-slide/slide/middleware"
 )
 
 func main() {
@@ -14,6 +15,7 @@ func main() {
 		Validator: validate,
 	}
 	app := slide.InitServer(&config)
+	app.Use(middleware.Compress())
 	app.Get("/health", func(ctx *slide.Ctx) error {
 		return ctx.SendStatusCode(http.StatusOK)
 	})
