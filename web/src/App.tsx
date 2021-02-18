@@ -1,24 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from 'react';
+import { Statuses, getStatusesAPI } from './api/api';
+
 
 function App() {
+
+  const [statuses, setStatuses] = useState<Statuses[]>([]);
+
+  async function getStatuses() {
+    try {
+      const statuses = await getStatusesAPI();
+      setStatuses(statuses);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  useEffect(() => {
+    getStatuses();
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn Elastic Beanstalk
-        </a>
-      </header>
     </div>
   );
 }
