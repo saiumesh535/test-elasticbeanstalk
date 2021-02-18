@@ -1,0 +1,29 @@
+name: CI
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache multiple paths
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/cache
+            !~/cache/exclude
+            **/node_modules
+          key: ${{ runner.os }}-${{ hashFiles('**/lockfiles') }}
+      - uses: actions/checkout@v2
+      - name: Installing dependencies
+        run: |
+          cd web && npm install
+          cd web && npm run build
+      - name: moving files
+        run: chmod +x moveweb.sh  && bash moveweb.sh
+      - name: print
+        run: ls
