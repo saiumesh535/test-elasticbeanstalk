@@ -4,6 +4,8 @@ import (
 	"log"
 	"net/http"
 
+	"aws_status/src/utils"
+
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/endpoints"
 	"github.com/aws/aws-sdk-go/aws/session"
@@ -37,7 +39,8 @@ func main() {
 			return ctx.Send(http.StatusInternalServerError, err.Error())
 		}
 		for _, alarm := range resp.MetricAlarms {
-			statuses[*alarm.AlarmName] = *alarm.StateValue
+			name := utils.Mapper(*alarm.AlarmName)
+			statuses[name] = *alarm.StateValue
 		}
 		return ctx.JSON(http.StatusOK, statuses)
 	})
