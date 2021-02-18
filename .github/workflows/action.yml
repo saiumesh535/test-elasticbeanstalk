@@ -21,8 +21,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: Installing dependencies
         run: |
-          cd web && npm install
-          cd web && npm run build
+          cd web && npm install && npm run build
       - name: moving files
         run: chmod +x moveweb.sh  && bash moveweb.sh
       - name: print
