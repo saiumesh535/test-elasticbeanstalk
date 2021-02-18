@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"log"
 	"net/http"
 
@@ -32,14 +31,15 @@ func main() {
 		return ctx.SendStatusCode(http.StatusOK)
 	})
 	app.Get("/aws", func(ctx *slide.Ctx) error {
+		statuses := make(map[string]string)
 		resp, err := svc.DescribeAlarms(nil)
 		if err != nil {
 			return ctx.Send(http.StatusInternalServerError, err.Error())
 		}
 		for _, alarm := range resp.MetricAlarms {
-			fmt.Println(*alarm.AlarmName)
+			statuses[*alarm.AlarmName] = *alarm.StateValue
 		}
-		return ctx.Send(http.StatusOK, *resp.MetricAlarms[0].AlarmName)
+		return ctx.JSON(http.StatusOK, statuses)
 	})
 	app.ServerDir("/*", "build")
 	log.Fatal(app.Listen(":5000"))
