@@ -1,2 +1,2 @@
 mv web/build ./
-zip test-zip.zip  * -r -T -x "web/**/*"
+zip server.zip  * -r -T -x "web/**/*"
