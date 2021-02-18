@@ -5,6 +5,6 @@ export interface Statuses {
 }
 
 export async function getStatusesAPI(): Promise<Statuses> {
-    const resp = await axios.get('http://awsstatus-env.eba-kfp7zb2p.us-east-1.elasticbeanstalk.com/');
+    const resp = await axios.get('http://awsstatus-env.eba-kfp7zb2p.us-east-1.elasticbeanstalk.com/aws');
     return resp.data;
 }
