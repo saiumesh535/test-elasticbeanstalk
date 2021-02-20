@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useSearchState } from "../../state/search.state";
 import { useServicesState } from "../../state/services.state";
-import { demoServices, Service } from "../../types/common-types";
+import { Service } from "../../types/common-types";
 import ServiceComponent from "./service/service.component";
 import './services.scss';
 
