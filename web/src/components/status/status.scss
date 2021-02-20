@@ -1,0 +1,53 @@
+.status {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px;
+
+    p {
+        margin: 0px
+    }
+
+    .main-status {
+        display: flex;
+        align-items: center;
+        padding-left: 10px;
+        width: 640px;
+        height: 40px;
+
+        /* green-up */
+        background: #70D65C;
+
+        .text {
+            font-family: Rubik;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 18px;
+            line-height: 20px;
+
+            /* identical to box height, or 111% */
+
+            color: #FFFFFF;
+        }
+    }
+
+    .status-text {
+        width: 640px;
+        height: 40px;
+        margin-right: 10px;
+        margin-top: 5px;
+
+        .text {
+            font-family: Rubik;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 14px;
+            line-height: 16px;
+
+            /* identical to box height, or 114% */
+
+            /* black-4 */
+            color: #B3B3B3;
+        }
+    }
+}

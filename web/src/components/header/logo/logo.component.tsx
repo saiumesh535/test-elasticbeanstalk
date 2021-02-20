@@ -1,8 +1,12 @@
 import './logo.scss';
+import { ReactComponent as LogoImage } from '../../../assets/logo.svg'
+import './logo.scss';
 
 function Logo() {
     return (
-        <h1 className='logo'>Apty</h1>
+        <div className='logo'>
+            <LogoImage />
+        </div>
     )
 }
 
