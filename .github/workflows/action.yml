@@ -28,7 +28,7 @@ jobs:
       - name: print
         run: ls
       - name: Deploy to EB
-        if: github.ref == 'refs/heads/master'
+        if: github.ref == 'refs/heads/main'
         uses: einaregilsson/beanstalk-deploy@v11
         with:
           use_existing_version_if_available: true
