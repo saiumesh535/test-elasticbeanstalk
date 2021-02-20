@@ -15,7 +15,7 @@ function App() {
   useEffect(() => {
     // TODO remove this later
     addServices(demoServices);
-  }, [demoServices]);
+  }, [addServices]);
 
   return (
     <div className="App">
