@@ -1,0 +1,22 @@
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 30px;
+    height: 60px;
+    background: #333333;
+    align-items: center;
+    a,
+    u {
+        text-decoration: none;
+        color: #FFFFFF;
+        font-family: Rubik;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 18px;
+        line-height: 20px;
+        margin-left: 15px;
+        &:hover{
+            color: #FF4001;
+        }
+    }
+}
