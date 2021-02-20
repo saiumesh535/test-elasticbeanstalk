@@ -23,10 +23,12 @@ jobs:
         run: |
           cd web && npm install && npm run build
       - name: moving files
+        if: github.ref == 'refs/heads/main'
         run: chmod +x moveweb.sh  && bash moveweb.sh
       - name: print
         run: ls
       - name: Deploy to EB
+        if: github.ref == 'refs/heads/master'
         uses: einaregilsson/beanstalk-deploy@v11
         with:
           use_existing_version_if_available: true
