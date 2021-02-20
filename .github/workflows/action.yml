@@ -1,0 +1,40 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache multiple paths
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/cache
+            !~/cache/exclude
+            **/node_modules
+          key: ${{ runner.os }}-${{ hashFiles('**/lockfiles') }}
+      - uses: actions/checkout@v2
+      - name: Installing dependencies
+        run: |
+          cd web && npm install && npm run build
+      - name: moving files
+        run: chmod +x moveweb.sh  && bash moveweb.sh
+      - name: print
+        run: ls
+      - name: Deploy to EB
+        uses: einaregilsson/beanstalk-deploy@v11
+        with:
+          use_existing_version_if_available: true
+          wait_for_environment_recovery: 120
+          aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          region: ${{ secrets.AWS_REGION }}
+          application_name: aws_status
+          environment_name: Awsstatus-env
+          version_label: Awsstatus-env-${{ github.sha }}
+          deployment_package: server.zip
