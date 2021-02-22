@@ -30,8 +30,17 @@
 
     .status-line {
         width: 10px;
-        background: #70D65C;
         margin: 5px;
+    }
+
+    .green {
+        background: #70D65C;
+    }
+    .red {
+        background: #D65C5C;
+    }
+    .yellow {
+        background: #EBCF47;
     }
 
     p {

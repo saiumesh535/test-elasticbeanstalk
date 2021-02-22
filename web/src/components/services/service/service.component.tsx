@@ -7,7 +7,7 @@ import Tooltip from "../../tooltip/tooltip.component";
 function ServiceComponent(props: Service) {
     return (
         <div className='service'>
-            <div className='status-line'></div>
+            <div className={`status-line ${props.status}`}></div>
             <div className='service-content'>
                 <div className='title'>
                     <p className='name'>{props.name}</p>

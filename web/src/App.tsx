@@ -5,17 +5,22 @@ import StatusComponent from "./components/status/status.component";
 import ServicesComponent from "./components/services/services.component";
 import FooterComponent from "./components/footer/footer.component";
 import { useServicesState } from "./state/services.state";
-import { demoServices } from "./types/common-types";
 import { useEffect } from "react";
+import { fetchServices } from "./helpers/common";
 
 function App() {
 
   const { addServices } = useServicesState();
+  
+  async function getServices() {
+    const servs = await fetchServices();
+    addServices(servs);
+  };
 
   useEffect(() => {
-    // TODO remove this later
-    addServices(demoServices);
-  }, [addServices]);
+    getServices();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div className="App">

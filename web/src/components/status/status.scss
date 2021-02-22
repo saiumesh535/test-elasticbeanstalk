@@ -8,15 +8,22 @@
         margin: 0px
     }
 
+    .green {
+        background: #70D65C;
+    }
+    .red {
+        background: #D65C5C;
+    }
+    .yellow {
+        background: #EBCF47;
+    }
+
     .main-status {
         display: flex;
         align-items: center;
         padding-left: 10px;
         width: 640px;
         height: 40px;
-
-        /* green-up */
-        background: #70D65C;
 
         .text {
             font-family: Rubik;

@@ -5,13 +5,14 @@ function LinkComponent() {
 
     return (
         <div className='links'>
-            {
-                headerLinks.map((link) =>
-                (
-                    <a href={link.link} target="_blank" rel="noopener noreferrer"
-                    >{link.name}</a>
-                )
-                )
+            {headerLinks.map((link) => (
+                <a
+                    key={link.name}
+                    href={link.link}
+                    target="_blank"
+                    rel="noopener noreferrer">{link.name}
+                </a>
+            ))
             }
         </div>
     )

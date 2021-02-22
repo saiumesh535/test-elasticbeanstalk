@@ -14,3 +14,9 @@ export const headerLinks: HeaderLink[] = [
         link: "https://www.facebook.com/apty.io"
     }    
 ]
+
+export const statusTexts = {
+    green: 'All Systems Operational',
+    yellow: 'Partially degraded service',
+    red: 'Some Systems are experiencing issues'
+}
